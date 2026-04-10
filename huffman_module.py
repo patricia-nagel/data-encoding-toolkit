@@ -94,12 +94,15 @@ class Huffman:
 
         return mensagem_decodificada
     
-    '''
-    Frequência e Prioridade: "Primeiro, eu conto quantas vezes cada letra aparece. Uso uma Fila de Prioridade (Heap) para garantir que as letras que aparecem menos fiquem sempre 'na mão' para serem processadas primeiro."
-
-Construção da Árvore: "Eu retiro os dois nós de menor frequência da fila e uno-os num novo nó pai, cuja frequência é a soma dos dois. Repito isto até sobrar apenas um nó: a Raiz."
-
-Atribuição de Bits: "Com a árvore pronta, percorro-a do topo até as folhas. Sempre que vou para a esquerda, atribuo o bit 0. Para a direita, o bit 1. Isso garante que nenhum código seja prefixo de outro (Propriedade do Prefixo), evitando ambiguidades."
-
-Decodificação: "Para decodificar, eu pego na sequência de bits e vou 'andando' pela árvore. Se o bit for 0, desço para o filho da esquerda; se for 1, para o da direita. Quando chego a uma folha, o símbolo é revelado e eu volto para o topo da árvore para processar o resto dos bits."
-    '''
+'''
+Explicação:
+    - Primeiro, contamos quantas vezes cada letra aparece. Usamos uma Fila de Prioridade (Heap) para garantir que as letras que
+      aparecem menos fiquem sempre 'na mão' para serem processadas primeiro.
+    - Retiramos os dois nós de menor frequência da fila e unimos-os num novo nó pai, cuja frequência é a soma dos dois.
+      Repetimos isto até sobrar apenas um nó: a Raiz.
+    - Com a árvore pronta, percorremos ela do topo até as folhas. Sempre que vamos para a esquerda, atribuimos o bit 0. 
+      Para a direita, o bit 1. Isso garante que nenhum código seja prefixo de outro (Propriedade do Prefixo), evitando ambiguidades.
+    - Para decodificar, pegamos na sequência de bits e vamos 'andando' pela árvore. Se o bit for 0, descemos para o filho da 
+      esquerda; se for 1, para o da direita. Quando chegamos a uma folha, o símbolo é revelado e voltamos para o topo da árvore 
+      para processar o resto dos bits.
+'''

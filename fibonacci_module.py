@@ -72,16 +72,18 @@ class Fibonacci:
             
         return mensagem_decodificada
     
-    '''
-    A Sequência Base: "Eu utilizo a sequência de Fibonacci começando em 1 e 2 ($F(2)$ e $F(3)$). 
-    Ignoramos o primeiro '1' da sequência matemática para garantir que cada número tenha uma representação única (Teorema de Zeckendorf).
-    "O Encoder (Algoritmo Ganancioso): "Para codificar um valor ASCII, eu procuro o maior número de Fibonacci que cabe dentro dele. 
-    Subtraio esse valor, marco '1' naquela posição, e repito o processo com o que sobrou até chegar a zero.
-    "O Bit de Parada (Stop Bit): "A característica única de Zeckendorf é que nunca existem dois bits '1' seguidos na codificação de 
-    um número. Por isso, eu adiciono um bit '1' extra no final de cada símbolo. Isso cria o padrão 11, que serve como um 
-    separador universal."O Decoder: "O meu decoder lê os bits um por um. Assim que ele encontra o padrão 11, ele sabe que 
-    um caractere terminou. Ele então pega os bits anteriores, multiplica cada bit '1' pelo seu peso na sequência de Fibonacci e 
-    soma tudo para recuperar o código ASCII original."Dica de Ouro: Repare que no encoder, a sequência de Fibonacci é percorrida 
-    de trás para frente (reversed), mas os bits são gravados na ordem da sequência. Isso é importante para que o bit menos 
-    significativo (o menor Fibonacci) fique na esquerda.
-    '''
+'''
+Explicação: 
+    - Utilizamos a sequência de Fibonacci começando em 1 e 2 ($F(2)$ e $F(3)$). Ignoramos o primeiro '1' da sequência matemática 
+    para garantir que cada número tenha uma representação única (Teorema de Zeckendorf).
+    - Para codificar um valor ASCII, procuramos o maior número de Fibonacci que cabe dentro dele. Subtraimos esse valor, marcamos 
+    '1' naquela posição, e repitimos o processo com o que sobrou até chegar a zero.
+    - A característica única de Zeckendorf é que nunca existem dois bits '1' seguidos na codificação de um número. 
+    Por isso, adicionamos um bit '1' extra no final de cada símbolo. Isso cria o padrão 11, que serve como um 
+    separador universal.
+    - O decoder lê os bits um por um. Assim que ele encontra o padrão 11, ele sabe que um caractere terminou. 
+    Ele então pega os bits anteriores, multiplica cada bit '1' pelo seu peso na sequência de Fibonacci e soma tudo 
+    para recuperar o código ASCII original.
+    - No encoder, a sequência de Fibonacci é percorrida de trás para frente (reversed), mas os bits são gravados na ordem da sequência.
+    Isso é importante para que o bit menos significativo (o menor Fibonacci) fique na esquerda.
+'''

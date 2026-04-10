@@ -73,13 +73,14 @@ class Golomb:
 
 '''
 Explicação:
-- Cálculo de K: Primeiro, eu calculo a média dos valores ASCII da mensagem. Escolho o k como a potência de 2 
-mais próxima dessa média para que o sufixo binário tenha sempre o mesmo número de bits, o que facilita a decodificação.
-- Divisão em duas partes: Para cada caractere, eu divido o valor dele pelo meu k. Isso me dá um quociente e um resto.
-- O Prefixo (Unário): O quociente eu codifico de forma unária: se o quociente for 3, eu coloco três zeros e um '1' no final. 
-Esse '1' avisa o meu decoder que o quociente acabou.
-- O Sufixo (Binário): O resto da divisão eu transformo em binário puro. Uso o comando zfill para garantir que ele tenha o
- tamanho correto (ex: 3 bits se k for 8).
-- A Decodificação: No decoder, eu faço o caminho inverso: conto os zeros até o primeiro '1' para descobrir o quociente, 
-leio os próximos bits fixos para descobrir o resto e aplico a fórmula (Quociente * k) + Resto para recuperar o caractere ASCII original.
+    - Primeiro, calculamos a média dos valores ASCII da mensagem. Escolhemos k como a potência de 2 
+    mais próxima dessa média para que o sufixo binário tenha sempre o mesmo número de bits, o que facilita a decodificação.
+    - Depois, para cada caractere, dividimos o valor dele pelo nosso k. Isso dá um quociente e um resto.
+    - O quociente codificamos de forma unária: se o quociente for 3, colocamos três zeros e um '1' no final. 
+    Esse '1' avisa o decoder que o quociente acabou.
+    - O resto da divisão transformamos em binário puro. Usamos o comando zfill para garantir que ele tenha o
+    tamanho correto (ex: 3 bits se k for 8).
+    - No decoder, fazemos o caminho inverso: contamos os zeros até o primeiro '1' para descobrir o quociente, 
+    lemos os próximos bits fixos para descobrir o resto e aplicamos a fórmula (Quociente * k) + Resto para recuperar o 
+    caractere ASCII original.
 '''
