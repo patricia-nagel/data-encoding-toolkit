@@ -41,7 +41,6 @@ class EliasGamma():
             while ponteiro < len(mensagem_codificada) and mensagem_codificada[ponteiro] == "0":
                 n += 1
                 ponteiro += 1
-                #simbolo = np.power(2, n)
 
             # Pula o stop bit ('1')
             ponteiro += 1
