@@ -72,16 +72,9 @@ class Golomb:
             # ========================
             
             # Codificação unária:
-            # usamos "0" repetido + "1" como marcador de parada
-            
-            # Ex: quociente = 3 → "0001"
-            
-            # IMPORTANTE:
-            # Poderia ser "1110" também (outra convenção),
-            # mas aqui escolhemos:
-            # - 0 = repetição
-            # - 1 = fim
-            prefixo = ("0" * quociente) + "1"
+            # usamos "1" repetido + "0" como marcador de parada
+            # Ex: quociente = 3 → "1110"
+            prefixo = ("1" * quociente) + "0"
             
             # ========================
             # CODIFICAÇÃO DO RESTO
@@ -89,7 +82,7 @@ class Golomb:
             
             # Converte o resto para binário
             # bin(x) → '0b101'
-            # [2:] → remove '0b'
+            # [2:] → remove '0b' do python
             sufixo = bin(resto)[2:]
             
             # Garante tamanho fixo (muito importante!)
@@ -129,11 +122,11 @@ class Golomb:
             # Isso representa o valor do quociente
             quociente = 0
             
-            while bits[ponteiro] == "0":
+            while bits[ponteiro] == "1":
                 quociente += 1
                 ponteiro += 1
             
-            # Pula o '1' (marcador de fim do unário)
+            # Pula o '0' (marcador de fim do unário)
             ponteiro += 1
 
             # ========================

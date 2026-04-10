@@ -92,6 +92,12 @@ def executar_opcao(algoritmo, acao):
     
     elif acao == "Decodificar":
 
+        # Validação binária (aceita espaços)
+        partes = mensagem.split()
+        if not all(all(c in "01" for c in parte) for parte in partes):
+            messagebox.showerror("Erro", "A entrada deve conter apenas 0s e 1s.")
+            return
+
         if algoritmo == "Golomb":
             # Lê o valor de k digitado pelo usuário
             k_valor = entrada_k.get().strip()
