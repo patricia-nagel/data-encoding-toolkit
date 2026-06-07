@@ -384,6 +384,8 @@ def _mostrar_resposta(resposta: dict):
                 historico.append(f"  ⚠ Erros corrigidos nos blocos: {erros}")
         else:
             historico.append("  ✓ Nenhum erro detectado.")
+        entrada_mensagem.delete(0, tk.END)
+        entrada_mensagem.insert(0, resposta["mensagem_corrigida"])
 
     atualizar_historico()
 
@@ -421,7 +423,7 @@ def inserir_erro():
     historico.append(f"Original:   {bits}")
     historico.append(f"Com erro:   {bits_com_erro}  (bit {pos}: {bit_original} → {bit_novo})")
 
-    # Atualiza a variável global para que o envio ao servidor use os bits com erro
+    # Atualiza a variável global para que erros sucessivos se acumulem
     ultimo_resultado_codificado = bits_com_erro
 
     # Preenche o campo de entrada com os bits corrompidos para facilitar decodificação
